@@ -1,0 +1,57 @@
+<div class="mui-panel main" style="margin-bottom: 0px">
+    <h2 class="blog-post-title">Your Deals</h2>
+</div>
+<div class="mui-panel mainpanel">
+    <button type="button" class="mui-btn mui-btn--primary fa fa-plus dealbtn" ng-click="open(property);">&nbsp;Add New Deal</button>
+    <br>
+    <div class="table-responsive ">
+        <div class="panel panel-info property-panel">
+            <div class="panel-heading filterpanel">
+                <div class="sw-search">
+                    <div class="nav-search" id="nav-search">
+                        Filter: <span class="input-icon">
+                        <input placeholder="Filter deals list ..." class="nav-search-input filter-box" ng-model="filterproperty" ng-change="resetLimit();"  autocomplete="off" type="text" style="width:300px; color: #000;" focus>
+                        
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped">
+                <tr ng-show="properties.length==0">
+                    <td style="vertical-align:middle;"><i class="fa fa-ban fa-3x"></i>&nbsp;No data found</td>
+                </tr>
+                <tr ng-hide="properties.length>-1">
+                    <td style="vertical-align:middle;"><i class="fa fa-cog fa-3x fa-spin"></i>&nbsp;Loading</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row card-panel-dashboard">
+        <div class="col-md-12 card-panel-dashboard" ng-repeat="c in properties | filter:filterproperty | orderBy:'-id'" id="{{c.id}}" animate-on-change='c.name + c.category' ng-animate=" 'animate'">
+            <div class="card row card-panel-dashboard">
+                <div class="card-content col-md-12">
+                    <p>
+                        <div class=pull-right>
+                            <button type="button" class="btn btn-default fa fa-edit" ng-click="open(c);"></button>
+                            <button type="button" class="btn btn-danger fa fa-trash-o" ng-click="deleteproperty(c);"></button>
+                        </div>
+                    </p>
+                    <p><b>Product Name:</b> {{c.name}}</p>
+                </div>
+                <div class="card-action col-md-6">
+                    <p><b>Ingredients :</b> {{c.address}}</p>
+                    <!-- <p><b>State:</b> {{c.state}}</p> -->
+                    <p><b>Description:</b> {{c.long_description}}</p>
+                    <!-- <p><b>Locality:</b> {{c.locality}}</p> -->
+                    <button class="btn" ng-class="{Active:'btn-success', Inactive:''}[c.status_u]" ng-click="changeProductStatus(c);">{{c.status_u}}</button>
+                </div>
+                <div class="card-action col-md-6">
+                    <p><b>Price:</b> &#8377; {{c.price}}</p>
+                    <p><b>Suitable for:</b> {{c.gender}}</p>
+                    <!-- <p><b>Type:</b> {{c.type}}</p> -->
+                    <!-- <button class="btn" ng-click="uploadImage();">{{c.status_u}}</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

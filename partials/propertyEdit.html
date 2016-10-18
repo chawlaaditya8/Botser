@@ -1,0 +1,50 @@
+<button type="button" class="close" ng-click="cancel();">
+    <i class="fa fa-times-circle-o" style="margin:10px;color:blue;"></i>
+</button>
+<div class="modal-header">
+    <h3 class="modal-title">{{buttonText}}</h3>
+</div>
+<form name="property_form" class="form-horizontal" role="form" novalidate>
+    <form-element label="Product Name :" mod="property">
+        <input type="text" class="form-control" name="name" placeholder="Product Name" ng-model="property.name" focus/>
+    </form-element>
+    <form-element name=searchForm label="Ingredients" mod="property">
+        <textarea type="text" name="place" class="form-control" rows="4" placeholder="Enter ingredients here." ng-model="property.address" /></textarea>
+    </form-element>
+    <form-element name=searchForm label="Type" mod="property">
+        <select class="form-control" ng-model="property.status_u" ng-options="k for k in types"></select>
+    </form-element>
+    <form-element label="Price" mod="property">
+        <input type="text" name="price" class="form-control" placeholder="PRICE" ng-model="property.price" only-numbers/>
+        <small class="errorMessage" ng-show="product_form.price.$dirty && product_form.price.$invalid"> Enter the price.</small>
+    </form-element>
+    <form-element label="Description" mod="property">
+        <textarea type="text" name="long_description" class="form-control" rows="4" placeholder="Enter description here." ng-model="property.long_description" /></textarea>
+    </form-element>
+    <form-element ng-hide="buttonText == 'Add New property'" label="Photo" mod="property" style="display:none;">
+        <input type="file" ngf-select ng-model="picFile" name="image" accept="image/*" ngf-max-size="2MB">
+        <i ng-show="myForm.file.$error.maxSize">File too large
+                {{picFile.size / 1000000|number:1}}MB: max {{picFile.$errorParam}}</i>
+        <br>
+        <button ng-click="uploadPic(picFile)" class="btn btn-primary">Upload File</button>
+        <span class="progress" ng-show="picFile.progress >= 0">
+                  <div style="width:{{picFile.progress}}%"
+                  ng-bind="picFile.progress + '%'"></div>
+                </span>
+        <span ng-show="picFile.result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </form-element>
+    <div class="space"></div>
+    <div class="space-4"></div>
+    <div class="modal-footer">
+        <form-element label="">
+            <div class="text-right">
+                <a class="btn btn-sm" ng-click="cancel()"><i class="ace-icon fa fa-reply"></i> &nbsp;Cancel</a>
+                <button ng-click="saveproperty(property); search();" ng-disabled="property_form.$invalid || enableUpdate" class="btn btn-sm btn-primary" type="submit">
+                    <i class="ace-icon fa fa-check"></i>{{buttonText}}
+                </button>
+            </div>
+        </form-element>
+    </div>
+</form>
+</div>

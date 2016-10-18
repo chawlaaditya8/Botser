@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 class="blog-post-title">Welcome {{user[0].name}}!!</h2>
+    <hr/>
+    <button type="button" class="btn btn-danger fa fa-pencil" ng-click="open(user[0]);">&nbsp;Edit Your Profile</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="mui-panel container user-panel">
+        <!-- content -->
+        <table class="table table-striped table-hover">
+            <tr>
+                <td class="field"><strong> Name</strong></td>
+                <td class=""> {{user[0].userName}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> Gender</strong></td>
+                <td class=""> {{user[0].gender}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> D.O.B</strong></td>
+                <td class=""> {{user[0].dob}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> Phone Number</strong></td>
+                <td class=""> {{user[0].phone}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> E-Mail</strong></td>
+                <td class=""> {{user[0].userEmail}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> Address</strong></td>
+                <td class=""> {{user[0].address}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> City</strong></td>
+                <td class=""> {{user[0].city}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> Country</strong></td>
+                <td class=""> {{user[0].country}}</td>
+            </tr>
+            <tr>
+                <td class="field"><strong> Pincode</strong></td>
+                <td class=""> {{user[0].pin}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
