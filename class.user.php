@@ -128,7 +128,7 @@ class USER
   // $mail->Send();
  
 
-$from = new SendGrid\Email(null, "admin@onebhk.com");
+$from = new SendGrid\Email(null, "admin@xyz.com");
 $subject = $sbject;
 $to = new SendGrid\Email(null, $email);
 $content = new SendGrid\Content("text/html", $message);
