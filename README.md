@@ -10,4 +10,4 @@
 - Clone this repository on your local machine.
 - Set up a MySQL database and create two tables named properties and users in it. (SQLdump to be added soon).
 - Configure the environment by entering your details in <code>api/v1/config.php</code> and <code>authentication.php</code> 
-- Place the directory in /var/www/html if you're using Ubuntu or htdocs if you're using XAMPP on windowsand run the project through localhost.
+- Place the directory in your local server directory.
