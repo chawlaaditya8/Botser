@@ -2,10 +2,10 @@
 ob_start();
 session_start();
 
-  $username = "u589473381_user";
-  $password = "abcd@1234";
-  $database = "u589473381_root";
-  $hostname = "mysql.hostinger.in";
+  $username = "";
+  $password = "";
+  $database = "";
+  $hostname = "";
 
   $dbc = mysqli_connect($hostname, $username, $password, $database);
 if (isset($_POST['formsubmitted'])) {
