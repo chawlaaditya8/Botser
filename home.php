@@ -59,8 +59,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
 <script src="//cdn.muicss.com/mui-0.9.0/js/mui.min.js"></script>
-<script src="js/ng-file-upload.min.js"></script>
-<script src="js/autocomplete.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
 <!-- AngularJS custom codes -->
