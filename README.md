@@ -11,7 +11,7 @@
 - Set up a MySQL database and create two tables named properties and users in it.
 - Configure the environment by entering your details in <code>api/v1/config.php</code> and <code>authentication.php</code> 
 - Place the directory in your local server directory.
-<<<<<<< HEAD
+
 
 # Demo Images 
 - Dashboard view.
