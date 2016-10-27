@@ -30,7 +30,7 @@ if(isset($_POST['btn-submit']))
        <br /><br />
        Click Following Link To Reset Your Password 
        <br /><br />
-       <a href='http://www.polypolymer.xyz/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
+       <a href='http://www.abc.xyz/resetpass.php?id=$id&code=$code'>click here to reset your password</a>
        <br /><br />
        thank you :)
        ";
