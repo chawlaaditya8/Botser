@@ -21,4 +21,4 @@
 ![10](https://cloud.githubusercontent.com/assets/15071438/19735013/6d0b84c6-9bc7-11e6-97dd-9c2138f13070.PNG)
 
 # Note
-- This is an old structure which will soon be removed and the new structure is being developed on develop branch.
+- This is an old structure which will soon be removed and the new structure is being developed on master branch.
