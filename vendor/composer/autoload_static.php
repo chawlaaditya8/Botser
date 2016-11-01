@@ -4,27 +4,31 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit73cb6fbb1111a978377609b057823bb7
+class ComposerStaticInit45d264971f28416c6368e36e7bcc7465
 {
     public static $files = array (
-        '3f8bdd3b35094c73a26f0106e3c0f8b2' => __DIR__ . '/../..' . '/lib/SendGrid.php',
-        '9dda55337a76a24e949fbcc5d905a2c7' => __DIR__ . '/../..' . '/lib/helpers/mail/Mail.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
-    public static $prefixesPsr0 = array (
-        'S' => 
+    public static $prefixLengthsPsr4 = array (
+        'F' => 
         array (
-            'SendGrid' => 
-            array (
-                0 => __DIR__ . '/..' . '/sendgrid/php-http-client/lib',
-            ),
+            'Facebook\\' => 9,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
         ),
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixesPsr0 = ComposerStaticInit73cb6fbb1111a978377609b057823bb7::$prefixesPsr0;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit45d264971f28416c6368e36e7bcc7465::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit45d264971f28416c6368e36e7bcc7465::$prefixDirsPsr4;
 
         }, null, ClassLoader::class);
     }
