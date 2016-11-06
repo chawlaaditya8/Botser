@@ -4,25 +4,35 @@ if(!isset($_SESSION['fb_access_token'])){
 	header('Location: http://localhost:8080/fb-login/login.php');
 }
 echo $_SESSION['fb_access_token'];
-include_once('http.php');
+$curl = curl_init();
 
-$url = 'https://graph.facebook.com/v2.8/me/accounts';
-$method = 'GET';
-$request = new HttpRequest($url, $method);
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://graph.facebook.com/v2.8/me/accounts",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_CAINFO => dirname(__FILE__) .'/cacert.pem',
+  CURLOPT_SSL_VERIFYPEER => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "authorization: OAuth EAAJbsw7irIIBAJrdcKNlvNZAMkSwGxc5oB1Qvwmnuu1GGDiWwN0RH9SnSRDhONPcgJGSZA1ZAmyLTqyMN4UP2ZBZCdUZAZAxrIZAAex72hDtxDoDcjpT31MXoDaZA7jZAgGSiWpmDsfb5ujfb5rzy4Epy3PKyCZBdymdDEZD",
+    "cache-control: no-cache",
+    "content-type: application/x-www-form-urlencoded"
+    // "postman-token: aec930b7-1592-9eb8-7370-40938272eac3"
+  ),
+));
 
-$request->headers = array(
-  // 'postman-token' => '2bf043e9-80f6-f769-ff0d-e8c031681960',
-  'cache-control' => 'no-cache',
-  'authorization' => 'OAuth EAAJbsw7irIIBAJrdcKNlvNZAMkSwGxc5oB1Qvwmnuu1GGDiWwN0RH9SnSRDhONPcgJGSZA1ZAmyLTqyMN4UP2ZBZCdUZAZAxrIZAAex72hDtxDoDcjpT31MXoDaZA7jZAgGSiWpmDsfb5ujfb5rzy4Epy3PKyCZBdymdDEZD',
-  'content-type' => 'application/x-www-form-urlencoded'
-);
+$response = curl_exec($curl);
+$err = curl_error($curl);
 
-try {
-  $response = $request->send();
+curl_close($curl);
 
-  echo $response->getBody();
-} catch (HttpException $ex) {
-  echo $ex;
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+  echo $response;
 }
 
 ?>
