@@ -5,8 +5,8 @@ if(!session_id()){
   session_start();
 }
 $fb = new Facebook\Facebook([
-  'app_id' => '',
-  'app_secret' => '',
+  'app_id' => '663774560431234',
+  'app_secret' => '8d5114a41e1e95bd3c509cd947135f74',
   'default_graph_version' => 'v2.6',
   ]);
 
@@ -51,7 +51,7 @@ echo '<h3>Metadata</h3>';
 var_dump($tokenMetadata);
 
 // Validation (these will throw FacebookSDKException's when they fail)
-$tokenMetadata->validateAppId('');
+$tokenMetadata->validateAppId('663774560431234');
 // If you know the user ID this access token belongs to, you can validate it here
 //$tokenMetadata->validateUserId('123');
 $tokenMetadata->validateExpiration();
@@ -73,5 +73,5 @@ $_SESSION['fb_access_token'] = (string) $accessToken;
 
 // User is logged in with a long-lived access token.
 // You can redirect them to a members-only page.
-header('Location: http://localhost/fb-login/members.php');
+header('Location: http://localhost/Botser/members.php');
 ?>
