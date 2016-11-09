@@ -1,38 +1,31 @@
 <?php 
+require 'vendor/autoload.php';
 session_start();
 if(!isset($_SESSION['fb_access_token'])){
-	header('Location: http://localhost:8080/fb-login/login.php');
+	header('Location: http://localhost/fb-login/login.php');
 }
-echo $_SESSION['fb_access_token'];
-$curl = curl_init();
+$fb = new Facebook\Facebook([
+  'app_id' => '663774560431234',
+  'app_secret' => '8d5114a41e1e95bd3c509cd947135f74',
+  'default_graph_version' => 'v2.6',
+  ]);
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://graph.facebook.com/v2.8/me/accounts",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_CAINFO => dirname(__FILE__) .'/cacert.pem',
-  CURLOPT_SSL_VERIFYPEER => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
-    "authorization: OAuth EAAJbsw7irIIBAJrdcKNlvNZAMkSwGxc5oB1Qvwmnuu1GGDiWwN0RH9SnSRDhONPcgJGSZA1ZAmyLTqyMN4UP2ZBZCdUZAZAxrIZAAex72hDtxDoDcjpT31MXoDaZA7jZAgGSiWpmDsfb5ujfb5rzy4Epy3PKyCZBdymdDEZD",
-    "cache-control: no-cache",
-    "content-type: application/x-www-form-urlencoded"
-    // "postman-token: aec930b7-1592-9eb8-7370-40938272eac3"
-  ),
-));
-
-$response = curl_exec($curl);
-$err = curl_error($curl);
-
-curl_close($curl);
-
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
+try {
+  // Returns a `Facebook\FacebookResponse` object
+  $response = $fb->get('/me?fields=id,name,accounts', $_SESSION['fb_access_token']);
+} catch(Facebook\Exceptions\FacebookResponseException $e) {
+  echo 'Graph returned an error: ' . $e->getMessage();
+  exit;
+} catch(Facebook\Exceptions\FacebookSDKException $e) {
+  echo 'Facebook SDK returned an error: ' . $e->getMessage();
+  exit;
 }
 
-?>
+$user = $response->getGraphUser();
+
+echo 'Name: ' . $user['name'] . '<br>';
+echo $user['accounts'][0]['name'] . '<br>';
+echo $user['accounts'][1]['name'];
+// OR
+// echo 'Name: ' . $user->getName();
+?>		
