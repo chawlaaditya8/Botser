@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['fb_access_token'])){
 	header('Location: http://localhost/Botser/login.php');
 }
+echo $_SESSION['fb_access_token'];
 $fb = new Facebook\Facebook([
   'app_id' => '663774560431234',
   'app_secret' => '8d5114a41e1e95bd3c509cd947135f74',
@@ -37,7 +38,7 @@ for($i = 0; $i < count($user['accounts']); $i++){
     exit;
   }
   $pagedata2 = $pagedata1->getGraphObject();
-  echo $i+1 . ') ' . $pagedata2['name'];
+  echo $i+1 . ') ' . $pagedata2['name'] . '-' . $user['accounts'][$i]['id'];
   echo '<br>';
   echo 'About: ' . $pagedata2['about'];
   echo '<br>';
