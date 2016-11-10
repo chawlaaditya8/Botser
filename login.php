@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 
 if(!session_id()){
-	session_start();
+  session_start();
 }
 $fb = new Facebook\Facebook([
   'app_id' => '663774560431234',

@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 session_start();
 if(!isset($_SESSION['fb_access_token'])){
-	header('Location: http://localhost/fb-login/login.php');
+	header('Location: http://localhost/Botser/login.php');
 }
 $fb = new Facebook\Facebook([
   'app_id' => '663774560431234',
@@ -20,12 +20,34 @@ try {
   echo 'Facebook SDK returned an error: ' . $e->getMessage();
   exit;
 }
-
 $user = $response->getGraphUser();
-
 echo 'Name: ' . $user['name'] . '<br>';
-echo $user['accounts'][0]['name'] . '<br>';
-echo $user['accounts'][1]['name'];
-// OR
-// echo 'Name: ' . $user->getName();
+echo '<br>';
+
+for($i = 0; $i < count($user['accounts']); $i++){
+
+  $url = '/'. $user['accounts'][$i]['id'] .'?fields=about,link,website,name,access_token';
+  try {
+    $pagedata1 = $fb->get($url, $_SESSION['fb_access_token']);
+  } catch(Facebook\Exceptions\FacebookResponseException $e) {
+    echo 'Graph returned an error: ' . $e->getMessage();
+    exit;
+  } catch(Facebook\Exceptions\FacebookSDKException $e) {
+    echo 'Facebook SDK returned an error: ' . $e->getMessage();
+    exit;
+  }
+  $pagedata2 = $pagedata1->getGraphObject();
+  echo $i+1 . ') ' . $pagedata2['name'];
+  echo '<br>';
+  echo 'About: ' . $pagedata2['about'];
+  echo '<br>';
+  echo 'Access Token: ' . $pagedata2['access_token'];
+  echo '<br>';
+  echo 'Link: ' . $pagedata2['link'];
+  echo '<br>';
+  if(isset($pagedata2['website'])){
+    echo 'Website: ' . $pagedata2['website'];
+  }
+  echo '<br>';
+}
 ?>		
