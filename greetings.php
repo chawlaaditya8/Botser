@@ -17,7 +17,7 @@ $fb = new Facebook\Facebook([
 $data = [
   "setting_type" => "greeting",
   "greeting" => [
-    "text" => "Hello from the other side"
+    "text" => $_POST["greeting"]
   ]
 ];
 
