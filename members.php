@@ -50,6 +50,7 @@ for($i = 0; $i < count($user['accounts']); $i++){
     echo 'Website: ' . $pagedata2['website'];
   }
   echo '<form action="greetings.php" method="post">';
+  echo '<input style="display:none" value="'.$pagedata2['access_token'].'" name="access">';
   echo 'Greeting: <input type="text" name="greeting"><br>';
   echo '<input type="submit" value="Greet them like this">';
   echo '</form>';
