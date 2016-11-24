@@ -10,7 +10,6 @@ $fb = new Facebook\Facebook([
   'app_secret' => '8d5114a41e1e95bd3c509cd947135f74',
   'default_graph_version' => 'v2.6',
   ]);
-
 try {
   // Returns a `Facebook\FacebookResponse` object
   $response = $fb->get('/me?fields=id,name,accounts', $_SESSION['fb_access_token']);
@@ -53,6 +52,11 @@ for($i = 0; $i < count($user['accounts']); $i++){
   echo '<input style="display:none" value="'.$pagedata2['access_token'].'" name="access">';
   echo 'Greeting: <input type="text" name="greeting"><br>';
   echo '<input type="submit" value="Greet them like this">';
+  echo '</form>';
+  echo '<br>';
+  echo '<form action="fetchData.php" method="post">';
+  echo 'url: <input type="text" name="url"><br>';
+  echo '<input type="submit" value="extract their juice :P">';
   echo '</form>';
   echo '<br>';
 }

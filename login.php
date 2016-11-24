@@ -12,7 +12,7 @@ $fb = new Facebook\Facebook([
 
 $helper = $fb->getRedirectLoginHelper();
 
-$permissions = ['email']; // Optional permissions
+$permissions = ['manage_pages', 'pages_messaging']; // Optional permissions
 $loginUrl = $helper->getLoginUrl('http://localhost/Botser/fb-callback.php', $permissions);
 
 echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
