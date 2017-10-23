@@ -1,56 +1,61 @@
 [
     {
-        "name": "sendgrid/php-http-client",
-        "version": "3.1.0",
-        "version_normalized": "3.1.0.0",
+        "name": "facebook/graph-sdk",
+        "version": "5.4.1",
+        "version_normalized": "5.4.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/sendgrid/php-http-client.git",
-            "reference": "01c3fc4b94df008cfe03ffb467d4c6dbe6dcfb2c"
+            "url": "https://github.com/facebook/php-graph-sdk.git",
+            "reference": "a5a6b6cc493d8dc417f588c7c0bdfc6396198350"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sendgrid/php-http-client/zipball/01c3fc4b94df008cfe03ffb467d4c6dbe6dcfb2c",
-            "reference": "01c3fc4b94df008cfe03ffb467d4c6dbe6dcfb2c",
+            "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/a5a6b6cc493d8dc417f588c7c0bdfc6396198350",
+            "reference": "a5a6b6cc493d8dc417f588c7c0bdfc6396198350",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3"
+            "php": "^5.4|^7.0"
         },
         "require-dev": {
-            "phpunit/phpunit": "~4.4",
-            "squizlabs/php_codesniffer": "2.*"
+            "guzzlehttp/guzzle": "~5.0",
+            "mockery/mockery": "~0.8",
+            "phpunit/phpunit": "~4.0"
         },
-        "time": "2016-06-11 00:47:24",
+        "suggest": {
+            "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+        },
+        "time": "2016-10-18 19:19:03",
         "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.x-dev"
+            }
+        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "SendGrid": "lib/"
-            }
+            "psr-4": {
+                "Facebook\\": "src/Facebook/"
+            },
+            "files": [
+                "src/Facebook/polyfills.php"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "Facebook Platform"
         ],
         "authors": [
             {
-                "name": "Matt Bernier",
-                "email": "dx@sendgrid.com"
-            },
-            {
-                "name": "Elmer Thomas",
-                "email": "elmer@thinkingserious.com"
+                "name": "Facebook",
+                "homepage": "https://github.com/facebook/php-graph-sdk/contributors"
             }
         ],
-        "description": "HTTP REST client, simplified for PHP",
-        "homepage": "http://github.com/sendgrid/php-http-client",
+        "description": "Facebook SDK for PHP",
+        "homepage": "https://github.com/facebook/php-graph-sdk",
         "keywords": [
-            "api",
-            "fluent",
-            "http",
-            "rest",
-            "sendgrid"
+            "facebook",
+            "sdk"
         ]
     }
 ]
