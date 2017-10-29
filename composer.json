@@ -1,4 +1,5 @@
 {
+    "name": "Botser",
     "require": {
         "facebook/graph-sdk": "^5.4"
     }
